@@ -15,14 +15,25 @@ if ($vote == 0) {$option1 = $option1 + 1;}
 if ($vote == 1) {$option2 = $option2 + 1;}
 if ($vote == 2) {$option3 = $option3 + 1;}
 
-$vote1 = number_format(100*$option1/($option1+$option2+$option3),1);
-$vote2 = number_format(100*$option2/($option1+$option2+$option3),1);
-$vote3 = number_format(100*$option3/($option1+$option2+$option3),1);
-
-$insertvote = $option1."-".$option2."-".$option3;
-$fp = fopen($filename,"w");
-fputs($fp,$insertvote);
+$insert_vote = $option1."-".$option2."-".$option3;
+$fp = fopen($filename, "w");
+fputs($fp, $insert_vote);
 fclose($fp);
+
+$count = $option1 + $option2 + $option3;
+
+$vote1 = number_format(100*$option1/($count),1);
+$vote2 = number_format(100*$option2/($count),1);
+$vote3 = number_format(100*$option3/($count),1);
+
+function voteTotal() {
+	global $count;
+	if ($count == 1) {
+		echo($count." vote");
+	} else {
+		echo($count." votes");
+	};
+};
 ?>
 
 <style>
@@ -58,7 +69,7 @@ fclose($fp);
 </label>
 
 <div class="poll-bottom">
-	<div class="poll-count"><?php echo($option1+$option2+$option3);?> votes</div>
+	<div class="poll-count"><?php voteTotal();?></div>
 	<button class="submit" disabled>Submit</button>
 </div>
 

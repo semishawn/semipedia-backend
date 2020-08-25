@@ -14,15 +14,23 @@ fwrite($fp, $date."\n");
 fwrite($fp, '"'.$answer.'"'."\n\n");
 fclose($fp);
 
-$count = 1;
-$count += file_get_contents($count_file);
+$count = file_get_contents($count_file) + 1;
 file_put_contents($count_file, $count);
+
+function answerTotal() {
+	global $count;
+	if ($count == 1) {
+		echo($count." answer");
+	} else {
+		echo($count." answers");
+	};
+};
 ?>
 
 <div class="poll-title">Thanks!</div>
 <textarea disabled><?php echo($answer);?></textarea>
 <div class="poll-bottom">
-	<div class="poll-count"><?php echo($count);?> answers</div>
+	<div class="poll-count"><?php answerTotal();?></div>
 	<button class="submit" disabled>Submit</button>
 </div>
 
