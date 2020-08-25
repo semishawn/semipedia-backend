@@ -3,7 +3,7 @@ header("Access-Control-Allow-Origin: *");
 
 $vote = $_REQUEST['vote'];
 
-$filename = "results.txt";
+$filename = "votes.txt";
 $content = file($filename);
 
 $array = explode("-", $content[0]);
