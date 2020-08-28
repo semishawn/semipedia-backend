@@ -4,38 +4,14 @@ header("Access-Control-Allow-Origin: *");
 
 $vote = $_REQUEST["vote"];
 
-$host = "ec2-54-235-192-146.compute-1.amazonaws.com";
-$db = "df3crt0ek2h6hj";
-$username = "bqnkeamtybkpey";
-$password = "6c2bfa0d75b6889a5c9975b38248bda2cd8860278957d124b3fc03ab1065e0f4";
-$conn = pg_connect(getenv("postgres://bqnkeamtybkpey:6c2bfa0d75b6889a5c9975b38248bda2cd8860278957d124b3fc03ab1065e0f4@ec2-54-235-192-146.compute-1.amazonaws.com:5432/df3crt0ek2h6hj"));
+$conn = pg_connect(getenv("DATABASE_URL"));
 
-if ($vote == 1) {
-	pg_query($conn,"
-		UPDATE poll1
-		SET vote1 = vote1 + 1
-		WHERE id = '1'
-	");
-}
+if ($vote == 1) {pg_query($conn,"UPDATE poll1 SET vote1 = vote1 + 1 WHERE id = '1'");}
+if ($vote == 1) {pg_query($conn,"UPDATE poll1 SET vote2 = vote2 + 1 WHERE id = '1'");}
+if ($vote == 1) {pg_query($conn,"UPDATE poll1 SET vote3 = vote3 + 1 WHERE id = '1'");}
 
-if ($vote == 2) {
-	pg_query($conn,"
-		UPDATE poll1
-		SET vote2 = vote2 + 1
-		WHERE id = '1'
-	");
-}
-
-if ($vote == 3) {
-	pg_query($conn,"
-		UPDATE poll1
-		SET vote3 = vote3 + 1
-		WHERE id = '1'
-	");
-}
-
-$result = pg_query($conn, "SELECT vote1, vote2, vote3 FROM poll1 WHERE id = '1'");
-$row = pg_fetch_array($result, PGSQL_ASSOC);
+$result = pg_query($conn, "SELECT * FROM poll1 WHERE id = '1'");
+$row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
 $option1 = $row["vote1"];
 $option2 = $row["vote2"];
 $option3 = $row["vote3"];
