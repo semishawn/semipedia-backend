@@ -5,10 +5,12 @@ $vote = $_REQUEST['vote'];
 
 $conn = pg_connect(getenv("DATABASE_URL"));
 
-if ($vote == 1) {pg_query($conn,"UPDATE poll1 SET yes = yes + 1 WHERE id = '1'");}
-if ($vote == 2) {pg_query($conn,"UPDATE poll1 SET no = no + 1 WHERE id = '1'");}
+$title = "yes-no";
 
-$result = pg_query($conn, "SELECT * FROM poll1 WHERE id = '1'");
+if ($vote == 1) {pg_query($conn,"UPDATE {$title} SET yes = yes + 1 WHERE title = 'healthcare'");}
+if ($vote == 2) {pg_query($conn,"UPDATE {$title} SET no = no + 1 WHERE title = 'healthcare'");}
+
+$result = pg_query($conn, "SELECT * FROM {$title} WHERE title = 'healthcare'");
 $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
 $yes = $row["yes"];
 $no = $row["no"];

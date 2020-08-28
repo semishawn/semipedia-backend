@@ -5,12 +5,14 @@ $answer = $_REQUEST["answer"];
 
 $conn = pg_connect(getenv("DATABASE_URL"));
 
+$title = "open_ended";
+
 $date = new DateTime("now", new DateTimeZone("America/New_York"));
 $date = $date->format("M j, Y \a\t g:ia");
 
-pg_query($conn,"INSERT INTO open_ended (date, answer) VALUES ('{$date}', '{$answer}'");
+pg_query($conn,"INSERT INTO {$title} (date, answer) VALUES ('{$date}', '{$answer}'");
 
-$count = pg_query($conn,"SELECT COUNT(answer)");
+$count = pg_query($conn,"SELECT COUNT(answer) FROM {$title}");
 
 function answerTotal() {
 	global $count;

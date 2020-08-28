@@ -6,15 +6,17 @@ $vote = $_REQUEST["vote"];
 
 $conn = pg_connect(getenv("DATABASE_URL"));
 
-if ($vote == 1) {pg_query($conn,"UPDATE poll1 SET vote1 = vote1 + 1 WHERE id = '1'");}
-if ($vote == 2) {pg_query($conn,"UPDATE poll1 SET vote2 = vote2 + 1 WHERE id = '1'");}
-if ($vote == 3) {pg_query($conn,"UPDATE poll1 SET vote3 = vote3 + 1 WHERE id = '1'");}
+$title = "multi_choice";
 
-$result = pg_query($conn, "SELECT * FROM poll1 WHERE id = '1'");
+if ($vote == 1) {pg_query($conn,"UPDATE {$title} SET option1 = option1 + 1 WHERE title = 'beverage'");}
+if ($vote == 2) {pg_query($conn,"UPDATE {$title} SET option2 = option2 + 1 WHERE title = 'beverage'");}
+if ($vote == 3) {pg_query($conn,"UPDATE {$title} SET option3 = option3 + 1 WHERE title = 'beverage'");}
+
+$result = pg_query($conn, "SELECT * FROM {$title} WHERE title = 'beverage'");
 $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-$option1 = $row["vote1"];
-$option2 = $row["vote2"];
-$option3 = $row["vote3"];
+$option1 = $row["option1"];
+$option2 = $row["option2"];
+$option3 = $row["option3"];
 
 $count = $option1 + $option2 + $option3;
 
