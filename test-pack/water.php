@@ -1,21 +1,16 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 
-$answer = $_REQUEST['answer'];
+$answer = $_REQUEST["answer"];
 
-$list_file = 'answer-list.txt';
-$count_file = 'answer-count.txt';
+$conn = pg_connect(getenv("DATABASE_URL"));
 
-$date = new DateTime("now", new DateTimeZone('America/New_York'));
-$date = $date->format('M j, Y \a\t g:ia');
+$date = new DateTime("now", new DateTimeZone("America/New_York"));
+$date = $date->format("M j, Y \a\t g:ia");
 
-$fp = fopen($list_file, 'a');
-fwrite($fp, $date."\n");
-fwrite($fp, '"'.$answer.'"'."\n\n");
-fclose($fp);
+pg_query($conn,"INSERT INTO open_ended (date, answer) VALUES ('{$date}', '{$answer}'");
 
-$count = file_get_contents($count_file) + 1;
-file_put_contents($count_file, $count);
+$count = pg_query($conn,"SELECT COUNT(answer)");
 
 function answerTotal() {
 	global $count;
@@ -35,5 +30,5 @@ function answerTotal() {
 </div>
 
 <script>
-$('.poll-title').height(titleHeight);
+$(".poll-title").height(titleHeight);
 </script>

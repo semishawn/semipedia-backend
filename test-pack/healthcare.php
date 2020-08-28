@@ -3,20 +3,15 @@ header("Access-Control-Allow-Origin: *");
 
 $vote = $_REQUEST['vote'];
 
-$filename = "votes.txt";
-$content = file($filename);
+$conn = pg_connect(getenv("DATABASE_URL"));
 
-$array = explode("-", $content[0]);
-$yes = $array[0];
-$no = $array[1];
+if ($vote == 1) {pg_query($conn,"UPDATE poll1 SET yes = yes + 1 WHERE id = '1'");}
+if ($vote == 2) {pg_query($conn,"UPDATE poll1 SET no = no + 1 WHERE id = '1'");}
 
-if ($vote == 0) {$yes = $yes + 1;}
-if ($vote == 1) {$no = $no + 1;}
-
-$insert_vote = $yes."-".$no;
-$fp = fopen($filename, "w");
-fputs($fp, $insert_vote);
-fclose($fp);
+$result = pg_query($conn, "SELECT * FROM poll1 WHERE id = '1'");
+$row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+$yes = $row["yes"];
+$no = $row["no"];
 
 $count = $yes + $no;
 
