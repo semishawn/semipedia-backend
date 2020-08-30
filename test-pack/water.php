@@ -7,12 +7,11 @@ $answer = $_REQUEST["answer"];
 $conn = pg_connect(getenv("DATABASE_URL"));
 
 $type = "open_ended";
-$title = "'water'";
 
-$date = new DateTime("now", new DateTimeZone("America/New_York"));
-$date = $date->format("M j, Y \a\t g:ia");
+date_default_timezone_set('America/New_York');
+$date = date("M j, Y") ." at ". date("g:ia");
 
-pg_query($conn,"INSERT INTO {$type} (date, answer) VALUES ({$data}, {$answer})");
+pg_query($conn,"INSERT INTO {$type} (date, answer) VALUES ('{$data}', '{$answer}')");
 $count = pg_query($conn,"SELECT COUNT(*) FROM {$type}");
 
 function answerTotal() {
