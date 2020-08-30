@@ -1,17 +1,19 @@
 <?php
 
+header("Access-Control-Allow-Origin: *");
+
 $answer = $_REQUEST["answer"];
 
 $conn = pg_connect(getenv("DATABASE_URL"));
 
-$title = "open_ended";
+$type = "open_ended";
+$title = "water";
 
 $date = new DateTime("now", new DateTimeZone("America/New_York"));
 $date = $date->format("M j, Y \a\t g:ia");
 
-pg_query($conn,"INSERT INTO {$title} (date, answer) VALUES ('{$date}', '{$answer}'");
-
-$count = pg_query($conn,"SELECT COUNT(answer) FROM {$title}");
+pg_query($conn,"INSERT INTO {$type} (date, answer) VALUES ({$data}, {$answer})");
+$count = pg_query($conn,"SELECT COUNT(*) FROM {$type}");
 
 function answerTotal() {
 	global $count;

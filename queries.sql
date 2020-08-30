@@ -11,7 +11,7 @@ INSERT INTO multi_choice (title, option1, option2, option3) VALUES ('my poll', 0
 --- Make title primary
 ALTER TABLE multi_choice ADD PRIMARY KEY (title);
 --- Reset values
-UPDATE multi_choice WHERE title = 'my poll' SET option1 = 0, option2 = 0, option3 = 0;
+UPDATE multi_choice SET option1 = 0, option2 = 0, option3 = 0 WHERE title = 'my poll';
 
 
 

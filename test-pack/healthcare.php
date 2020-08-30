@@ -1,15 +1,18 @@
 <?php
 
-$vote = $_REQUEST['vote'];
+header("Access-Control-Allow-Origin: *");
+
+$vote = $_REQUEST["vote"];
 
 $conn = pg_connect(getenv("DATABASE_URL"));
 
-$title = "yes-no";
+$type = "yes_no";
+$title = "healthcare";
 
-if ($vote == 1) {pg_query($conn,"UPDATE {$title} SET yes = yes + 1 WHERE title = 'healthcare'");}
-if ($vote == 2) {pg_query($conn,"UPDATE {$title} SET no = no + 1 WHERE title = 'healthcare'");}
+if ($vote == 1) {pg_query($conn,"UPDATE {$type} SET yes = yes + 1 WHERE title = {$title}");}
+if ($vote == 2) {pg_query($conn,"UPDATE {$type} SET no = no + 1 WHERE title = {$title}");}
 
-$result = pg_query($conn, "SELECT * FROM {$title} WHERE title = 'healthcare'");
+$result = pg_query($conn, "SELECT * FROM {$type} WHERE title = {$title}");
 $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
 $yes = $row["yes"];
 $no = $row["no"];
