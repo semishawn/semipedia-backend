@@ -1,7 +1,5 @@
 <?php
 
-header("Access-Control-Allow-Origin: *");
-
 $vote = $_REQUEST["vote"];
 
 $conn = pg_connect(getenv("DATABASE_URL"));

@@ -1,5 +1,4 @@
 <?php
-header("Access-Control-Allow-Origin: *");
 
 $vote = $_REQUEST['vote'];
 
@@ -28,6 +27,7 @@ function voteTotal() {
 		echo($count." votes");
 	};
 };
+
 ?>
 
 <style>

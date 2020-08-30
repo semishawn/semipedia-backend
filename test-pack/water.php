@@ -1,5 +1,4 @@
 <?php
-header("Access-Control-Allow-Origin: *");
 
 $answer = $_REQUEST["answer"];
 
@@ -22,6 +21,7 @@ function answerTotal() {
 		echo($count." answers");
 	};
 };
+
 ?>
 
 <div class="poll-title">Thanks!</div>
