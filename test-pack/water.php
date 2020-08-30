@@ -7,7 +7,7 @@ $answer = $_REQUEST["answer"];
 $conn = pg_connect(getenv("DATABASE_URL"));
 
 $type = "open_ended";
-$title = "water";
+$title = "'water'";
 
 $date = new DateTime("now", new DateTimeZone("America/New_York"));
 $date = $date->format("M j, Y \a\t g:ia");

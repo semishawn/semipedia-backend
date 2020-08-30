@@ -7,7 +7,7 @@ $vote = $_REQUEST["vote"];
 $conn = pg_connect(getenv("DATABASE_URL"));
 
 $type = "yes_no";
-$title = "healthcare";
+$title = "'healthcare'";
 
 if ($vote == 1) {pg_query($conn,"UPDATE {$type} SET yes = yes + 1 WHERE title = {$title}");}
 if ($vote == 2) {pg_query($conn,"UPDATE {$type} SET no = no + 1 WHERE title = {$title}");}

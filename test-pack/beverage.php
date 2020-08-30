@@ -7,7 +7,7 @@ $vote = $_REQUEST["vote"];
 $conn = pg_connect(getenv("DATABASE_URL"));
 
 $type = "multi_choice";
-$title = "beverage";
+$title = "'beverage'";
 
 if ($vote == 1) {pg_query($conn,"UPDATE {$type} SET option1 = option1 + 1 WHERE title = {$title}");}
 if ($vote == 2) {pg_query($conn,"UPDATE {$type} SET option2 = option2 + 1 WHERE title = {$title}");}
