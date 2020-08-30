@@ -27,7 +27,7 @@ INSERT INTO yes_no (title, yes, no) VALUES ('my poll', 0, 0);
 --- Make title primary
 ALTER TABLE yes_no ADD PRIMARY KEY (title);
 --- Reset values
-UPDATE yes_no WHERE title = 'my poll' SET yes = 0, no = 0;
+UPDATE yes_no SET yes = 0, no = 0 WHERE title = 'my poll';
 
 
 

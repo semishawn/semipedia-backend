@@ -37,7 +37,7 @@ function voteTotal() {
 ?> 
 
 <style>
-.poll>label {pointer-events: none;}
+.multi-choice label {pointer-events: none;}
 
 .fill1 {animation: fill1 0.5s ease-in-out forwards;}
 .fill2 {animation: fill2 0.5s ease-in-out forwards;}
