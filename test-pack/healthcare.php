@@ -60,7 +60,3 @@ function voteTotal() {
 	<div class="poll-count"><?php voteTotal();?></div>
 	<button class="submit" disabled>Submit</button>
 </div>
-
-<script>
-$('.poll-title').height(titleHeight);
-</script>

@@ -32,7 +32,3 @@ function answerTotal() {
 	<div class="poll-count"><?php answerTotal();?></div>
 	<button class="submit" disabled>Submit</button>
 </div>
-
-<script>
-$(".poll-title").height(titleHeight);
-</script>

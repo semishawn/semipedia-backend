@@ -50,20 +50,17 @@ function voteTotal() {
 
 <div class="poll-title">Thanks!</div>
 
-<input type="radio" name="vote" name="0" id="option1" autocomplete="off">
-<label for="option1">
+<label>
 	<div class="vote-fill fill1"></div>
 	<span class="option"><?php echo($vote1);?>%</span>
 </label>
 
-<input type="radio" name="vote" name="1" id="option2" autocomplete="off">
-<label for="option2">
+<label>
 	<div class="vote-fill fill2"></div>
 	<span class="option"><?php echo($vote2);?>%</span>
 </label>
 
-<input type="radio" name="vote" name="2" id="option3" autocomplete="off">
-<label for="option3">
+<label>
 	<div class="vote-fill fill3"></div>
 	<span class="option"><?php echo($vote3);?>%</span>
 </label>
@@ -72,7 +69,3 @@ function voteTotal() {
 	<div class="poll-count"><?php voteTotal();?></div>
 	<button class="submit" disabled>Submit</button>
 </div>
-
-<script>
-$(".poll-title").height(titleHeight);
-</script>
