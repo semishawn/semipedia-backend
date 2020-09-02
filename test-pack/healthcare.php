@@ -9,8 +9,8 @@ $conn = pg_connect(getenv("DATABASE_URL"));
 $type = "yes_no";
 $title = "'healthcare'";
 
-if ($vote == 1) {pg_query($conn,"UPDATE {$type} SET yes = yes + 1 WHERE title = {$title}");}
-if ($vote == 2) {pg_query($conn,"UPDATE {$type} SET no = no + 1 WHERE title = {$title}");}
+if ($vote == 1) {pg_query($conn, "UPDATE {$type} SET yes = yes + 1 WHERE title = {$title}");}
+if ($vote == 2) {pg_query($conn, "UPDATE {$type} SET no = no + 1 WHERE title = {$title}");}
 
 $result = pg_query($conn, "SELECT * FROM {$type} WHERE title = {$title}");
 $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
@@ -19,8 +19,8 @@ $no = $row["no"];
 
 $count = $yes + $no;
 
-$vote1 = number_format(100*$yes/($count),1);
-$vote2 = number_format(100*$no/($count),1);
+$vote1 = number_format(($yes/$count)*100, 1);
+$vote2 = number_format(($no/$count)*100, 1);
 
 function voteTotal() {
 	global $count;
