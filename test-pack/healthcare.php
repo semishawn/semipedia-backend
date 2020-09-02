@@ -46,14 +46,11 @@ function voteTotal() {
 <div class="poll-title">Thanks!</div>
 
 <div class="yes-no-container">
-	<input type="radio" name="vote" value="0" id="yes" autocomplete="off">
-	<label class="yes" for="yes">
+	<label class="yes">
 		<div class="vote-fill fill1"></div>
 		<span class="option"><?php echo($vote1);?>%</span>
 	</label>
-
-	<input type="radio" name="vote" value="1" id="no" autocomplete="off">
-	<label class="no" for="no">
+	<label class="no">
 		<div class="vote-fill fill2"></div>
 		<span class="option"><?php echo($vote2);?>%</span>
 	</label>
