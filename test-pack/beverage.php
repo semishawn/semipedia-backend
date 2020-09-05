@@ -34,6 +34,4 @@ function voteTotal() {
 };
 ?>
 
-<script>
-alert(<?php echo voteTotal();?>);
-</script>
+<?php echo("alert('".voteTotal()."')") ?>
