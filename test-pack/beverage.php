@@ -37,7 +37,7 @@ function voteTotal() {
 <script>
 	$('.option-percent1').html('<?=$vote1?>');
 	$('.option-fill1').animate({width: '<?=$vote1?>'}, 500);
-	
+
 	$('.option-percent2').html('<?=$vote2?>');
 	$('.option-fill2').animate({width: '<?=$vote2?>'}, 500);
 
