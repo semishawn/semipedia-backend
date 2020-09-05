@@ -5,7 +5,7 @@ $vote = $_REQUEST["vote"];
 
 $conn = pg_connect(getenv("DATABASE_URL"));
 
-$type = "multi_choice";
+$type = "multi_choice3";
 $title = "beverage";
 
 if ($vote == 1) {pg_query($conn, "UPDATE {$type} SET option1 = option1 + 1 WHERE title = '{$title}'");}
@@ -37,12 +37,9 @@ function voteTotal() {
 <script>
 	$('.option-percent1').html('<?=$vote1?>');
 	$('.option-fill1').animate({width: '<?=$vote1?>'}, 500);
-
 	$('.option-percent2').html('<?=$vote2?>');
 	$('.option-fill2').animate({width: '<?=$vote2?>'}, 500);
-
 	$('.option-percent3').html('<?=$vote3?>');
 	$('.option-fill3').animate({width: '<?=$vote3?>'}, 500);
-
 	$('.poll-count').html('<?=voteTotal()?>');
 </script>

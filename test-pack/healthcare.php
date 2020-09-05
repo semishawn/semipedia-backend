@@ -1,26 +1,25 @@
 <?php
-
 header("Access-Control-Allow-Origin: *");
 
 $vote = $_REQUEST["vote"];
 
 $conn = pg_connect(getenv("DATABASE_URL"));
 
-$type = "yes_no";
-$title = "'healthcare'";
+$type = "multi_choice2";
+$title = "healthcare";
 
-if ($vote == 1) {pg_query($conn, "UPDATE {$type} SET yes = yes + 1 WHERE title = {$title}");}
-if ($vote == 2) {pg_query($conn, "UPDATE {$type} SET no = no + 1 WHERE title = {$title}");}
+if ($vote == 1) {pg_query($conn, "UPDATE {$type} SET option1 = option1 + 1 WHERE title = '{$title}'");}
+if ($vote == 2) {pg_query($conn, "UPDATE {$type} SET option2 = option2 + 1 WHERE title = '{$title}'");}
 
-$result = pg_query($conn, "SELECT * FROM {$type} WHERE title = {$title}");
+$result = pg_query($conn, "SELECT * FROM {$type} WHERE title = '{$title}'");
 $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-$yes = $row["yes"];
-$no = $row["no"];
+$option1 = $row["option1"];
+$option2 = $row["option2"];
 
-$count = $yes + $no;
+$count = $option1 + $option2;
 
-$vote1 = number_format(($yes/$count)*100, 1);
-$vote2 = number_format(($no/$count)*100, 1);
+$vote1 = number_format(($option1/$count)*100, 1) . '%';
+$vote2 = number_format(($option2/$count)*100, 1) . '%';
 
 function voteTotal() {
 	global $count;
@@ -30,33 +29,12 @@ function voteTotal() {
 		echo($count." votes");
 	};
 };
-
 ?>
 
-<style>
-.yes-no label {pointer-events: none;}
-
-.fill1 {animation: fill1 0.5s ease-in-out forwards;}
-.fill2 {animation: fill2 0.5s ease-in-out forwards;}
-
-@keyframes fill1 {from{height: 0%;} to{height: <?php echo($vote1);?>%;}}
-@keyframes fill2 {from{height: 0%;} to{height: <?php echo($vote2);?>%;}}
-</style>
-
-<div class="poll-title">Thanks!</div>
-
-<div class="yes-no-container">
-	<label class="yes">
-		<div class="vote-fill fill1"></div>
-		<span class="option"><?php echo($vote1);?>%</span>
-	</label>
-	<label class="no">
-		<div class="vote-fill fill2"></div>
-		<span class="option"><?php echo($vote2);?>%</span>
-	</label>
-</div>
-
-<div class="poll-bottom">
-	<div class="poll-count"><?php voteTotal();?></div>
-	<button class="submit" disabled>Submit</button>
-</div>
+<script>
+	$('.option-percent1').html('<?=$vote1?>');
+	$('.option-fill1').animate({width: '<?=$vote1?>'}, 500);
+	$('.option-percent2').html('<?=$vote2?>');
+	$('.option-fill2').animate({width: '<?=$vote2?>'}, 500);
+	$('.poll-count').html('<?=voteTotal()?>');
+</script>

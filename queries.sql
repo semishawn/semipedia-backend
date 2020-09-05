@@ -1,33 +1,34 @@
---- Multiple Choice:
+--- Multiple Choice 2:
 --- Create table
-CREATE TABLE multi_choice (
+CREATE TABLE multi_choice2 (
   title text NOT NULL,
   option1 int NOT NULL DEFAULT 0,
   option2 int NOT NULL DEFAULT 0,
   option3 int NOT NULL DEFAULT 0
 );
 --- Set initial values
-INSERT INTO multi_choice (title, option1, option2, option3) VALUES ('my poll', 0, 0, 0);
+INSERT INTO multi_choice2 (title, option1, option2) VALUES ('my poll', 0, 0);
 --- Make title primary
-ALTER TABLE multi_choice ADD PRIMARY KEY (title);
+ALTER TABLE multi_choice2 ADD PRIMARY KEY (title);
 --- Reset values
-UPDATE multi_choice SET option1 = 0, option2 = 0, option3 = 0 WHERE title = 'my poll';
+UPDATE multi_choice2 SET option1 = 0, option2 = 0 WHERE title = 'my poll';
 
 
 
---- Yes or No:
+--- Multiple Choice 3:
 --- Create table
-CREATE TABLE yes_no (
+CREATE TABLE multi_choice3 (
   title text NOT NULL,
-  yes int NOT NULL DEFAULT 0,
-  no int NOT NULL DEFAULT 0
+  option1 int NOT NULL DEFAULT 0,
+  option2 int NOT NULL DEFAULT 0,
+  option3 int NOT NULL DEFAULT 0
 );
 --- Set initial values
-INSERT INTO yes_no (title, yes, no) VALUES ('my poll', 0, 0);
+INSERT INTO multi_choice3 (title, option1, option2, option3) VALUES ('my poll', 0, 0, 0);
 --- Make title primary
-ALTER TABLE yes_no ADD PRIMARY KEY (title);
+ALTER TABLE multi_choice3 ADD PRIMARY KEY (title);
 --- Reset values
-UPDATE yes_no SET yes = 0, no = 0 WHERE title = 'my poll';
+UPDATE multi_choice3 SET option1 = 0, option2 = 0, option3 = 0 WHERE title = 'my poll';
 
 
 
