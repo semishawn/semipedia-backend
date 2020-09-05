@@ -35,5 +35,5 @@ function voteTotal() {
 ?>
 
 <script>
-	$('option-percent').html('<?php echo($vote1);?>');
+	$('.option-percent').html('<?php echo($vote1);?>');
 </script>
