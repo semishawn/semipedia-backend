@@ -35,14 +35,14 @@ function voteTotal() {
 ?>
 
 <script>
-	$('.option-percent:nth-child(1)').html('<?=$vote1?>');
-	$('.option-fill:nth-child(1)').animate({width: '<?=$vote1?>'}, 500);
+	$('.option-percent1').html('<?=$vote1?>');
+	$('.option-fill1').animate({width: '<?=$vote1?>'}, 500);
+	
+	$('.option-percent2').html('<?=$vote2?>');
+	$('.option-fill2').animate({width: '<?=$vote2?>'}, 500);
 
-	$('.option-percent:nth-child(2)').html('<?=$vote2?>');
-	$('.option-fill:nth-child(2)').animate({width: '<?=$vote2?>'}, 500);
-
-	$('.option-percent:nth-child(3)').html('<?=$vote3?>');
-	$('.option-fill:nth-child(3)').animate({width: '<?=$vote3?>'}, 500);
+	$('.option-percent3').html('<?=$vote3?>');
+	$('.option-fill3').animate({width: '<?=$vote3?>'}, 500);
 
 	$('.poll-count').html('<?=voteTotal()?>');
 </script>
