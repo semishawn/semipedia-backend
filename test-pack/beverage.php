@@ -34,5 +34,6 @@ function voteTotal() {
 };
 ?>
 
-$('.option-percent:nth-child(1)').html('<?php echo $vote1 ?>');
-$('.option-fill:nth-child(1)').animate({width: '<?php echo $vote1 ?>'}, 500);
+<?php echo "
+	$('.option-percent').html(".$vote1.");
+" ?>
