@@ -20,9 +20,9 @@ $option3 = $row["option3"];
 
 $count = $option1 + $option2 + $option3;
 
-$vote1 = number_format(($option1/$count)*100, 1);
-$vote2 = number_format(($option2/$count)*100, 1);
-$vote3 = number_format(($option3/$count)*100, 1);
+$vote1 = number_format(($option1/$count)*100, 1) . '%';
+$vote2 = number_format(($option2/$count)*100, 1) . '%';
+$vote3 = number_format(($option3/$count)*100, 1) . '%';
 
 function voteTotal() {
 	global $count;
