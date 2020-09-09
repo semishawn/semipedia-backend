@@ -26,9 +26,7 @@ function answerTotal() {
 
 ?>
 
-<div class="poll-title">Thanks!</div>
-<textarea disabled><?php echo($answer);?></textarea>
-<div class="poll-bottom">
-	<div class="poll-count"><?php answerTotal();?></div>
-	<button class="submit" disabled>Submit</button>
-</div>
+<script>
+	$('textarea').prop('disabled', true);
+	$('.poll-count').html('<?=answerTotal()?>');
+</script>
