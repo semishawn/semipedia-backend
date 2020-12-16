@@ -1,5 +1,4 @@
 <?php
-
 function fileTree($dir) {
 	$files = preg_grep('/^([^.])/', scandir($dir));
 	foreach ($files as $link) {
@@ -12,7 +11,6 @@ function fileTree($dir) {
 		} else {echo "<a href=".$link.">".$link."</a><br>";}
 	}
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +20,7 @@ function fileTree($dir) {
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
 	<style>
 	body {
 		font-family: Calibri;
@@ -40,7 +38,7 @@ function fileTree($dir) {
 </head>
 
 <body>
-	<div><?=fileTree("./")?></div>
+	<div><?=fileTree('./')?></div>
 </body>
 
 </html>
