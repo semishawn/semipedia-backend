@@ -13,9 +13,9 @@ pg_query($conn, "UPDATE $type SET option$vote = option$vote + 1 WHERE title = '$
 $result = pg_query($conn, "SELECT * FROM $type WHERE title = '$title'");
 $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
 
-$option1 = $row['option1'];
-$option2 = $row['option2'];
-$option3 = $row['option3'];
+$option1 = intval($row['option1']);
+$option2 = intval($row['option2']);
+$option3 = intval($row['option3']);
 $options = [$option1, $option2, $option3];
 
 echo json_encode($options);
