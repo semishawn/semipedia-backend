@@ -1,7 +1,9 @@
 <?php
-$type = 'open_ended';
-
 header('Access-Control-Allow-Origin: *');
+
+$type = 'open_ended';
+$title = 'water';
+
 $answer = $_REQUEST['answer'];
 $conn = pg_connect(getenv('DATABASE_URL'));
 

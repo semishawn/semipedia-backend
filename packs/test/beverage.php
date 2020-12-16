@@ -1,8 +1,9 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+
 $type = 'multi_choice3';
 $title = 'beverage';
 
-header('Access-Control-Allow-Origin: *');
 $vote = $_REQUEST['vote'];
 $conn = pg_connect(getenv('DATABASE_URL'));
 
