@@ -15,5 +15,5 @@ $option1 = $row['option1'];
 $option2 = $row['option2'];
 
 $options = [$option1, $option2];
-echo json.encode($options);
+echo json_encode($options);
 ?>
