@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 $type = 'likert';
 $title = 'goober';
 
-$agreement = $_REQUEST['vote'];
+$point = $_REQUEST['vote'];
 $conn = pg_connect(getenv('DATABASE_URL'));
 
 pg_query($conn, "UPDATE $type SET point$point = point$point + 1 WHERE title = '$title'");
