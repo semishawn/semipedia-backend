@@ -18,7 +18,7 @@ $point2 = intval($row['point2']);
 $point3 = intval($row['point3']);
 $point4 = intval($row['point4']);
 $point5 = intval($row['point5']);
-$points = [$point1, $point2, $point3, $point4, $point4];
+$points = [$point1, $point2, $point3, $point4, $point5];
 
 echo json_encode($points);
 ?>
