@@ -23,7 +23,7 @@ $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
 $num_options = pg_num_fields($result) - 1;
 
 // Adding each value to array
-$options = array();
+$options = [];
 for ($i = 1; $i <= $num_options; $i++) {
 	array_push($options, intval($row["option$i"]));
 }
