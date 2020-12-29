@@ -14,7 +14,7 @@ $conn = pg_connect(getenv('DATABASE_URL'));
 
 // Incrementing each checked option
 for ($i = 0; $i <= count($response); $i++) {
-	pg_query($conn, "UPDATE ${pack}_${title} SET option${response[$i]} = option${response[$i]} + 1 WHERE title = '$title'");
+	pg_query($conn, "UPDATE ${pack}_${title} SET option${$response[$i]} = option${$response[$i]} + 1 WHERE title = '$title'");
 }
 
 // Select actual table
