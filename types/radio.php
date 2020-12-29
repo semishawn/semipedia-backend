@@ -20,7 +20,7 @@ $result = pg_query($conn, "SELECT * FROM $pack_$type WHERE title = '$title'");
 $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
 
 // Number of options
-$num_options = pg_num_fields($result) - 1;
+$num_options = intval(pg_num_fields($result)) - 1;
 
 // Adding each value to array
 $options = array();
