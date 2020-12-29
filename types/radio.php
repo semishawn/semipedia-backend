@@ -13,7 +13,7 @@ $response = $_REQUEST['response'];
 $conn = pg_connect(getenv('DATABASE_URL'));
 
 // Increment option chosen
-pg_query($conn, "UPDATE ${pack}_${type} SET option$response = option$response + 1 WHERE title = $title");
+pg_query($conn, "UPDATE ${pack}_${type} SET option$response = option$response + 1 WHERE title = '$title'");
 
 // Select actual table
 $result = pg_query($conn, "SELECT * FROM ${pack}_${type} WHERE title = '$title'");
