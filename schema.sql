@@ -17,16 +17,16 @@ UPDATE pack_radio SET option1 = 0, option2 = 0 WHERE title = 'my poll';
 
 
 
--- Open Ended:
+-- Short Answer:
 -- Create table
-CREATE TABLE pack_open_ended (
+CREATE TABLE pack_short_answer (
   date text NOT NULL,
   response text NOT NULL
 );
 -- Set initial values
-INSERT INTO pack_open_ended (date, response) VALUES ('Aug 28, 2020 6:42am', 'Test response ;)');
+INSERT INTO pack_short_answer (date, response) VALUES ('Aug 28, 2020 6:42am', 'Test response ;)');
 -- Make title primary
-ALTER TABLE pack_open_ended ADD PRIMARY KEY (date);
+ALTER TABLE pack_short_answer ADD PRIMARY KEY (date);
 
 
 
