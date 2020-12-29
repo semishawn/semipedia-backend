@@ -22,5 +22,12 @@ $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
 // Number of options
 $num_options = pg_num_fields($result) - 1;
 
-echo $row['option1'];
+// Adding each value to array
+$options = array();
+for ($i = 1; $i <= $num_options; $i++) {
+	array_push($options, intval($row["option$i"]));
+}
+
+// Passing JSON encoded array back
+echo json_encode($options);
 ?>
