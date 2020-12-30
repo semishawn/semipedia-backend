@@ -27,7 +27,8 @@ $num_options = pg_num_fields($result) - 1;
 // Adding each value to array
 $options = array();
 for ($i = 1; $i <= $num_options; $i++) {
-	array_push($options, intval($row["option$i"]));
+	$option = intval($row['option' . $i]);
+	array_push($options, $option);
 }
 
 // Passing JSON encoded array back
