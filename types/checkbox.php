@@ -14,21 +14,20 @@ $conn = pg_connect(getenv('DATABASE_URL'));
 
 // Incrementing each checked option
 foreach ($response as $key => $i) {
-	pg_query($conn, "UPDATE ${pack}_${title} SET option$i = option$i + 1 WHERE title = '$title'");
+	pg_query($conn, "UPDATE ${pack}_${title} SET option$i = option$i + 1");
 }
 
 // Select actual table
-$result = pg_query($conn, "SELECT * FROM ${pack}_${title} WHERE title = '$title'");
+$result = pg_query($conn, "SELECT * FROM ${pack}_${title}");
 $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
 
 // Number of options
-$num_options = pg_num_fields($result) - 1;
+$num_options = pg_num_fields($result);
 
 // Adding each value to array
 $options = array();
 for ($i = 1; $i <= $num_options; $i++) {
-	$option = intval($row['option' . $i]);
-	array_push($options, $option);
+	array_push($options, intval($row["option$i"]));
 }
 
 // Passing JSON encoded array back
