@@ -12,19 +12,19 @@ $response = $_REQUEST['response'];
 // Connect to database
 $conn = pg_connect(getenv('DATABASE_URL'));
 
-// Increment
-pg_query($conn, "UPDATE $pack_$type SET point$response = point$response + 1 WHERE title = '$title'");
+// Increment chosen point
+pg_query($conn, "UPDATE ${pack}_${title} SET point$response = point$response + 1");
 
 // Select actual table
-$result = pg_query($conn, "SELECT * FROM $pack_$type WHERE title = '$title'");
+$result = pg_query($conn, "SELECT * FROM ${pack}_${title}");
 $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
 
 // Number of points
-$num_points = pg_num_fields($result) - 1;
+$num_points = pg_num_fields($result);
 
 // Adding each value to array
 $points = array();
-for ($i = 0; $i <= $num_points; $i++) {
+for ($i = 1; $i <= $num_points; $i++) {
 	array_push($points, intval($row["point$i"]));
 }
 
