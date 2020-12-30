@@ -7,20 +7,20 @@ error_reporting(E_ALL);
 $pack = $_REQUEST['pack'];
 $type = $_REQUEST['type'];
 $title = $_REQUEST['title'];
-$response = $_REQUEST['response'];
+$response = json_decode($_REQUEST['response']);
 
 // Connect to database
 $conn = pg_connect(getenv('DATABASE_URL'));
 
-// Increment option chosen
-pg_query($conn, "UPDATE ${pack}_${title} SET option$response = option$response + 1 WHERE title = '$title'");
+// Increment chosen option
+pg_query($conn, "UPDATE ${pack}_${title} SET option$i = option$i + 1");
 
 // Select actual table
-$result = pg_query($conn, "SELECT * FROM ${pack}_${title} WHERE title = '$title'");
+$result = pg_query($conn, "SELECT * FROM ${pack}_${title}");
 $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
 
 // Number of options
-$num_options = pg_num_fields($result) - 1;
+$num_options = pg_num_fields($result);
 
 // Adding each value to array
 $options = array();
