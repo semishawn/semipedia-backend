@@ -17,10 +17,10 @@ date_default_timezone_set('America/New_York');
 $date = date('M j, Y') . ' at ' . date('g:ia');
 
 // Insert new response
-pg_query($conn, "INSERT INTO $type (date, response) VALUES ('$date', '$response')");
+pg_query($conn, "INSERT INTO ${pack}_${title} (date, response) VALUES ('$date', '$response')");
 
 // Select and count rows
-$rows = pg_query($conn, "SELECT * FROM $type");
+$rows = pg_query($conn, "SELECT * FROM ${pack}_${title}");
 $count = pg_num_rows($rows);
 
 // Pass number of responses back
