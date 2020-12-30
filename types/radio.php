@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 $pack = $_REQUEST['pack'];
 $type = $_REQUEST['type'];
 $title = $_REQUEST['title'];
-$response = json_decode($_REQUEST['response']);
+$response = $_REQUEST['response'];
 
 // Connect to database
 $conn = pg_connect(getenv('DATABASE_URL'));
