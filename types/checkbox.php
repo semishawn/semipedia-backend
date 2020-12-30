@@ -13,7 +13,7 @@ $response = json_decode($_REQUEST['response']);
 $conn = pg_connect(getenv('DATABASE_URL'));
 
 // Incrementing each checked option
-foreach ($i as $key => $response) {
+foreach ($response as $key => $i) {
 	pg_query($conn, "UPDATE ${pack}_${title} SET option$i = option$i + 1 WHERE title = '$title'");
 }
 
