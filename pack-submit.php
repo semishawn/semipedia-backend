@@ -18,7 +18,9 @@ foreach ($packResponses as $semipollResponse) {
 	$answer = $semipollResponse -> answer;
 
 	if ($type == "radio" || $type == "checkbox" || $type == "likert") {
-		// Incrementing each checked option
+		gettype($answer);
+
+		/* // Incrementing each checked option
 		foreach ($answer as $key => $i) {
 			pg_query($conn, "UPDATE ${packTitle}_${title} SET option$i = option$i + 1");
 		}
@@ -37,7 +39,7 @@ foreach ($packResponses as $semipollResponse) {
 		}
 
 		// Answer being passed back
-		$answer = json_encode($options);
+		$answer = json_encode($options); */
 	}
 
 	elseif ($type == "short_answer" || $type == "long_answer") {
