@@ -13,9 +13,9 @@ $conn = pg_connect(getenv('DATABASE_URL'));
 
 // Deal with each semipoll's response
 foreach ($packResponses as $semipollResponse) {
-	$title = $semipollResponse['title'];
-	$type = $semipollResponse['type'];
-	$answer = $semipollResponse['answer'];
+	$title = $semipollResponse -> title;
+	$type = $semipollResponse -> type;
+	$answer = $semipollResponse -> answer;
 
 	if ($type == "radio" || $type == "checkbox" || $type == "likert") {
 		// Incrementing each checked option
