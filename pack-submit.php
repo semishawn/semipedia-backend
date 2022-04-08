@@ -6,15 +6,16 @@ error_reporting(E_ALL);
 // Recieve JSONified ajax post
 $packTitle = $_REQUEST['packTitle'];
 $packResponses = json_decode($_REQUEST['packResponses']);
+$echo = [];
 
 // Connect to databse
 $conn = pg_connect(getenv('DATABASE_URL'));
 
 // Deal with each semipoll's response
 foreach ($packResponses as $semipollResponse) {
-	$title = $semipollResponse -> title;
-	$type = $semipollResponse -> type;
-	$answer = $semipollResponse -> answer;
+	$title = $semipollResponse['title'];
+	$type = $semipollResponse['type'];
+	$answer = $semipollResponse['answer'];
 
 	if ($type == "radio" || $type == "checkbox" || $type == "likert") {
 		// Incrementing each checked option
@@ -35,8 +36,8 @@ foreach ($packResponses as $semipollResponse) {
 			array_push($options, intval($row["option$i"]));
 		}
 
-		// Data being passed back
-		$echo = json_encode($options);
+		// Answer being passed back
+		$answer = json_encode($options);
 	}
 
 	elseif ($type == "short_answer" || $type == "long_answer") {
@@ -50,11 +51,19 @@ foreach ($packResponses as $semipollResponse) {
 		// Select and count number of anwers (convert into array)
 		$rows = pg_query($conn, "SELECT * FROM ${packTitle}_${title}");
 
-		// Data being passed back
-		$echo = pg_num_rows($rows);
+		// Answer being passed back
+		$answer = pg_num_rows($rows);
 	}
+
+	// Define result to send back, append to echo array
+	$result = [
+		'title' => $title,
+		'type' => $type,
+		'answer' => $answer
+	];
+	array_push($echo, $result);
 }
 
 // Pass back database data
-echo $echo;
+echo json_encode($echo);
 ?>
