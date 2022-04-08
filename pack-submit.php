@@ -18,7 +18,7 @@ foreach ($packResponses as $semipollResponse) {
 
 	if ($type == "radio" || $type == "checkbox" || $type == "likert") {
 		// Incrementing each checked option
-		foreach ($response as $key => $i) {
+		foreach ($answer as $key => $i) {
 			pg_query($conn, "UPDATE ${packTitle}_${title} SET option$i = option$i + 1");
 		}
 
@@ -45,7 +45,7 @@ foreach ($packResponses as $semipollResponse) {
 		$date = date('M j, Y') . ' at ' . date('g:ia');
 
 		// Insert new answer
-		pg_query($conn, "INSERT INTO ${packTitle}_${title} (date, response) VALUES ('$date', '$response')");
+		pg_query($conn, "INSERT INTO ${packTitle}_${title} (date, response) VALUES ('$date', '$answer')");
 
 		// Select and count number of anwers (convert into array)
 		$rows = pg_query($conn, "SELECT * FROM ${packTitle}_${title}");

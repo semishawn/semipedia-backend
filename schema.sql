@@ -1,4 +1,4 @@
--- Radio:
+-- Radio/Checkbox:
 -- Create table
 CREATE TABLE pack_radio (
   title text NOT NULL,
@@ -17,7 +17,7 @@ UPDATE pack_radio SET option1 = 0, option2 = 0 WHERE title = 'my poll';
 
 
 
--- Short Answer:
+-- Short/Answer Answer:
 -- Create table
 CREATE TABLE pack_short_answer (
   date text NOT NULL,
