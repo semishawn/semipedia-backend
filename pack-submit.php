@@ -18,10 +18,10 @@ foreach ($packResponses as $semipollResponse) {
 	$semipollAnswer = $semipollResponse -> answer;
 
 	if ($semipollType == "radio" || $semipollType == "checkbox" || $semipollType == "likert") {
-		$resultsToSendBack = gettype(json_decode($semipollAnswer));
+		$semipollAnswer = gettype(json_decode($semipollAnswer));
 
-		/* // Incrementing each checked option
-		foreach ($answer as $key => $i) {
+		// Incrementing each checked option
+		foreach ($semipollAnswer as $key => $i) {
 			pg_query($conn, "UPDATE ${packTitle}_${semipollTitle} SET option$i = option$i + 1");
 		}
 
@@ -38,8 +38,8 @@ foreach ($packResponses as $semipollResponse) {
 			array_push($options, intval($row["option$i"]));
 		}
 
-		// Answer being passed back
-		$answer = json_encode($options); */
+		// Data being sent back
+		$resultsToSendBack = json_encode($options);
 	}
 
 	elseif ($semipollType == "short_answer" || $semipollType == "long_answer") {
@@ -53,7 +53,7 @@ foreach ($packResponses as $semipollResponse) {
 		// Select and count number of anwers (convert into array)
 		$rows = pg_query($conn, "SELECT * FROM ${packTitle}_${semipollTitle}");
 
-		// Answer being passed back
+		// Data being sent back
 		$resultsToSendBack = pg_num_rows($rows);
 	}
 
