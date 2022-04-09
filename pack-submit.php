@@ -42,7 +42,7 @@ foreach ($packResponses as $semipollResponse) {
 		$answer = json_encode($options); */
 	}
 
-	elseif ($type == "short_answer" || $type == "long_answer") {
+	elseif ($semipollType == "short_answer" || $semipollType == "long_answer") {
 		// Set timezone and date format
 		date_default_timezone_set('America/New_York');
 		$date = date('M j, Y') . ' at ' . date('g:ia');
