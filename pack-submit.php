@@ -18,7 +18,7 @@ foreach ($packResponses as $semipollResponse) {
 	$semipollAnswer = $semipollResponse -> answer;
 
 	if ($semipollType == "radio" || $semipollType == "checkbox" || $semipollType == "likert") {
-		$semipollAnswer = gettype(json_decode($semipollAnswer));
+		$semipollAnswer = json_decode($semipollAnswer);
 
 		// Incrementing each checked option
 		foreach ($semipollAnswer as $key => $i) {
