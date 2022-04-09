@@ -13,12 +13,12 @@ $conn = pg_connect(getenv('DATABASE_URL'));
 
 // Deal with each semipoll's response
 foreach ($packResponses as $semipollResponse) {
-	$title = $semipollResponse -> title;
-	$type = $semipollResponse -> type;
-	$answer = $semipollResponse -> answer;
+	$semipollTitle = $semipollResponse -> title;
+	$semipollType = $semipollResponse -> type;
+	$semipollAnswer = $semipollResponse -> answer;
 
-	if ($type == "radio" || $type == "checkbox" || $type == "likert") {
-		$answer = gettype($answer);
+	if ($semipollType == "radio" || $semipollType == "checkbox" || $semipollType == "likert") {
+		$semipollResults = gettype($recievedAnswer);
 
 		/* // Incrementing each checked option
 		foreach ($answer as $key => $i) {
@@ -54,16 +54,16 @@ foreach ($packResponses as $semipollResponse) {
 		$rows = pg_query($conn, "SELECT * FROM ${packTitle}_${title}");
 
 		// Answer being passed back
-		$answer = pg_num_rows($rows);
+		$semipollResults = pg_num_rows($rows);
 	}
 
 	// Define result to send back, append to echo array
-	$result = [
-		'title' => $title,
-		'type' => $type,
-		'answer' => $answer
+	$packagedReply = [
+		'title' => $recievedTitle,
+		'type' => $recievedType,
+		'results' => $semipollResults
 	];
-	array_push($echo, $result);
+	array_push($echo, $packagedReply);
 }
 
 // Pass back database data
