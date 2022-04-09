@@ -22,11 +22,11 @@ foreach ($packResponses as $semipollResponse) {
 
 		/* // Incrementing each checked option
 		foreach ($answer as $key => $i) {
-			pg_query($conn, "UPDATE ${packTitle}_${title} SET option$i = option$i + 1");
+			pg_query($conn, "UPDATE ${packTitle}_${semipollTitle} SET option$i = option$i + 1");
 		}
 
 		// Select actual table
-		$result = pg_query($conn, "SELECT * FROM ${packTitle}_${title}");
+		$result = pg_query($conn, "SELECT * FROM ${packTitle}_${semipollTitle}");
 		$row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
 
 		// Number of options
@@ -48,10 +48,10 @@ foreach ($packResponses as $semipollResponse) {
 		$date = date('M j, Y') . ' at ' . date('g:ia');
 
 		// Insert new answer
-		pg_query($conn, "INSERT INTO ${packTitle}_${title} (date, response) VALUES ('$date', '$answer')");
+		pg_query($conn, "INSERT INTO ${packTitle}_${semipollTitle} (date, response) VALUES ('$date', '$semipollAnswer')");
 
 		// Select and count number of anwers (convert into array)
-		$rows = pg_query($conn, "SELECT * FROM ${packTitle}_${title}");
+		$rows = pg_query($conn, "SELECT * FROM ${packTitle}_${semipollTitle}");
 
 		// Answer being passed back
 		$resultsToSendBack = pg_num_rows($rows);
