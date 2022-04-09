@@ -20,9 +20,9 @@ UPDATE pack_radio SET option1 = 0, option2 = 0 WHERE title = 'my poll';
 -- Create table
 CREATE TABLE pack_short_answer (
   date text NOT NULL,
-  response text NOT NULL
+  answer text NOT NULL
 );
 -- Set initial values
-INSERT INTO pack_short_answer (date, response) VALUES ('Aug 28, 2020 6:42am', 'Test response ;)');
+INSERT INTO pack_short_answer (date, answer) VALUES ('Aug 28, 2020 6:42am', 'Test answer ;)');
 -- Make title primary
 ALTER TABLE pack_short_answer ADD PRIMARY KEY (date);

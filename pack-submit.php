@@ -45,7 +45,7 @@ foreach ($packResponses as $semipollResponse) {
 	elseif ($semipollType == "short_answer" || $semipollType == "long_answer") {
 		// Set timezone and date format
 		date_default_timezone_set('America/New_York');
-		$date = date('M j, Y') . ' at ' . date('g:ia');
+		$date = date('M j, Y') . ' at ' . date('g:i:s a');
 
 		// Insert new answer
 		pg_query($conn, "INSERT INTO ${packTitle}_${semipollTitle} (date, answer) VALUES ('$date', '$semipollAnswer')");
