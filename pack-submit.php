@@ -48,7 +48,7 @@ foreach ($packResponses as $semipollResponse) {
 		$date = date('M j, Y') . ' at ' . date('g:ia');
 
 		// Insert new answer
-		pg_query($conn, "INSERT INTO ${packTitle}_${semipollTitle} (date, response) VALUES ('$date', '$semipollAnswer')");
+		pg_query($conn, "INSERT INTO ${packTitle}_${semipollTitle} (date, answer) VALUES ('$date', '$semipollAnswer')");
 
 		// Select and count number of anwers (convert into array)
 		$rows = pg_query($conn, "SELECT * FROM ${packTitle}_${semipollTitle}");
