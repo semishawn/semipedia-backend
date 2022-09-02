@@ -33,7 +33,7 @@ foreach ($packResponses as $semipollResponse) {
 pg_query($conn, "INSERT INTO ${packTitle} (date${semipollTitlesString}) VALUES ('${date}'${semipollAnswersString});");
 
 // Get every row back
-$everything = pg_query($conn, "SELECT COUNT(*) FROM ${packTitle};");
+$everything = pg_query($conn, "SELECT * FROM ${packTitle};");
 
 // Pass back database data
 echo json_encode($everything);
