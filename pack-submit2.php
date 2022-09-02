@@ -33,7 +33,7 @@ pg_query($conn, "INSERT INTO ${packTitle} (date${semipollTitlesString}) VALUES (
 
 // Get every row back
 $everything = pg_query($conn, "SELECT * FROM ${packTitle};");
-$everythingFetched = pg_fetch_assoc($everything);
+$everythingFetched = pg_fetch_all($everything);
 
 // Pass back database data
 echo json_encode($everythingFetched);
