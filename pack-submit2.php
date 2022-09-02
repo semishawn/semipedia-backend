@@ -36,5 +36,5 @@ $everything = pg_query($conn, "SELECT * FROM ${packTitle};");
 $everythingFetched = pg_fetch_assoc($everything);
 
 // Pass back database data
-echo $everythingFetched;
+echo json_encode($everythingFetched);
 ?>
