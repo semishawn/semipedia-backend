@@ -35,6 +35,5 @@ pg_query($conn, "INSERT INTO ${packTitle} (date${semipollTitlesString}) VALUES (
 $everything = pg_query($conn, "SELECT * FROM ${packTitle};");
 
 // Pass back database data
-// echo json_encode($everything);
-echo "hey";
+echo $everything;
 ?>
