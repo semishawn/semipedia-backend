@@ -6,7 +6,6 @@ error_reporting(E_ALL);
 // Recieve JSONified ajax post
 $packTitle = $_REQUEST['packTitle'];
 $packResponses = json_decode($_REQUEST['packResponses']);
-$echo = [];
 
 // Connect to databse
 $conn = pg_connect(getenv('DATABASE_URL'));
@@ -36,5 +35,6 @@ pg_query($conn, "INSERT INTO ${packTitle} (date${semipollTitlesString}) VALUES (
 $everything = pg_query($conn, "SELECT * FROM ${packTitle};");
 
 // Pass back database data
-echo json_encode($everything);
+// echo json_encode($everything);
+echo "hey";
 ?>
